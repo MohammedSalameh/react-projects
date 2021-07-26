@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import AddUser from './Components/Users/AddUser';
 import UsersList from './Components/Users/UsersList';
-
+import Crypto from './Components/Crypto/Crypto';
 
 function App() {
  const [usersList, setUsersList] = useState([
@@ -20,6 +20,7 @@ function App() {
 
   return (
     <>
+      <Crypto />
       <AddUser onAddUser={addUserHandler}/>
       <UsersList users={usersList}/>
     </>
