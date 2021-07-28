@@ -16,7 +16,10 @@
 // Components Dispatch Actions(forwarded to reducer), which describes what the Reducer function
 // should perform.
 
-
 // REDUX TOOLKIT
 Makes you able to mutate state directly.
 Makes you able to slice up reducers
+
+
+__Reducers__ must be pure, side-effect free, synchronous functions.
+Side-effects and async codes, should be in the components (useEffect) or we write our own action creators.
