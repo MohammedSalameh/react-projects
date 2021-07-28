@@ -1,6 +1,7 @@
 import Card from '../UI/Card';
 import classes from './ProductItem.module.css';
 import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react'
 
 import {cartActions} from '../../store/cart-slice';
 

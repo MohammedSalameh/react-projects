@@ -15,7 +15,7 @@ const cartSlice = createSlice({
 					price: newItem.price,
 					quantity: 1,
 					totalPrice: newItem.price,
-					name: newItem.title,
+					name: newItem.name,
 				}); //BAD ON VANILLA REDUX, this is fine for toolkit
 			} else {
         exisitingItem.quantity++;
@@ -36,6 +36,12 @@ const cartSlice = createSlice({
 		},
 	},
 });
+
+
+//action creator
+const sendCartData = (cartData) => {
+	return { type: '', payload: cartData}
+}
 
 export const cartActions = cartSlice.actions;
 export default cartSlice;
