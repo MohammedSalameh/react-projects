@@ -27,7 +27,7 @@ const QuoteList = (props) => {
 	const changeSortingHandler = () => {
     // 1 way of doing it
     history.push({
-      pathname: locaiton.pathname,
+      pathname: location.pathname,
       search: `?sort=${(isSortingAscending ? 'desc' : 'asc')}`
     });
     // 2nd way of doing it
