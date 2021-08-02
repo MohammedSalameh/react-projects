@@ -2,6 +2,8 @@ import { useState, useRef, useContext } from 'react';
 import AuthContext from '../../store/auth-context';
 import classes from './AuthForm.module.css';
 
+import { useHistory } from 'react-router-dom';
+
 const AuthForm = () => {
 	const emailInputRef = useRef();
 	const passwordInputRef = useRef();
@@ -10,6 +12,7 @@ const AuthForm = () => {
 
 	const authCtx = useContext(AuthContext);
 
+	const history = useHistory();
 	const switchAuthModeHandler = () => {
 		setIsLogin((prevState) => !prevState);
 	};
@@ -44,8 +47,8 @@ const AuthForm = () => {
 				alert(errorMessage);
 			}
 
-      authCtx.login(data.idToken);
-
+			authCtx.login(data.idToken);
+			history.replace('/profile');
 		} else {
 			const response = await fetch(
 				'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAhRgUDRFYTZGcsW_jrme1vFR1xjk16QGs',
@@ -71,7 +74,7 @@ const AuthForm = () => {
 				alert(errorMessage);
 			}
 
-			console.log(data);
+			history.replace('/profile');
 		}
 		setIsLoading(false);
 	};

@@ -1,12 +1,14 @@
 import React, { useRef, useContext } from 'react';
 import AuthContext from '../../store/auth-context';
-
+import { useHistory } from 'react-router-dom';
 import classes from './ProfileForm.module.css';
 
 const ProfileForm = () => {
 	const newPasswordInputRef = useRef();
-
+  const history = useHistory();
 	const { token } = useContext(AuthContext);
+
+
 
 	const submitHandler = async (event) => {
 		event.preventDefault();
@@ -35,7 +37,8 @@ const ProfileForm = () => {
 				alert(data.error.message);
 			}
 		} else {
-      alert(data.error.message)
+			alert(data.message);
+      history.replace('/')
 		}
 	};
 
@@ -43,7 +46,12 @@ const ProfileForm = () => {
 		<form onSubmit={submitHandler} className={classes.form}>
 			<div className={classes.control}>
 				<label htmlFor='new-password'>New Password</label>
-				<input ref={newPasswordInputRef} minLength='7' type='password' id='new-password' />
+				<input
+					ref={newPasswordInputRef}
+					minLength='7'
+					type='password'
+					id='new-password'
+				/>
 			</div>
 			<div className={classes.action}>
 				<button>Change Password</button>
