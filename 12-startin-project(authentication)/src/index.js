@@ -5,12 +5,11 @@ import './index.css';
 import App from './App';
 import { AuthProvider } from './store/AuthProvider';
 
-
 ReactDOM.render(
-  <AuthProvider>
-    <BrowserRouter>
-    <App />
-  </BrowserRouter>
-  </AuthProvider>,
-  document.getElementById('root')
+	<AuthProvider>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
+	</AuthProvider>,
+	document.getElementById('root')
 );
