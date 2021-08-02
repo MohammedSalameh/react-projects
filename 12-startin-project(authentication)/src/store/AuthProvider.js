@@ -2,16 +2,23 @@ import AuthContext from './auth-context';
 import React, { useState } from 'react';
 
 export const AuthProvider = (props) => {
-	const [token, setToken] = useState(null);
+	
+	//localstorage is synchronous
+	const initialToken = localStorage.getItem('token');
+	const [token, setToken] = useState(initialToken);
 	const userIsLoggedIn = !!token;
 	// converts to true or false value
 	// if not epmty string true otherwise false
 
 	const loginHandler = (token) => {
+		localStorage.setItem('token', token);
 		setToken(token);
 	};
 
-	const logoutHandler = () => {};
+	const logoutHandler = () => {
+		localStorage.removeItem('token');
+		setToken(null);
+	};
 
 	const contextValue = {
 		token: token,

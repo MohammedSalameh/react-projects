@@ -26,7 +26,7 @@ const ProfileForm = () => {
 					password: enteredPassword,
 					returnSecureToken: true,
 				}),
-				headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
 			}
 		);
 
