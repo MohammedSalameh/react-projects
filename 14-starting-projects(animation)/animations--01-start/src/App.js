@@ -1,9 +1,9 @@
+import './App.css';
 import React, { useState } from 'react';
 
-import './App.css';
 import Modal from './components/Modal/Modal';
-import Backdrop from './components/Backdrop/Backdrop';
 import List from './components/List/List';
+import Backdrop from './components/Backdrop/Backdrop';
 
 import Transition from 'react-transition-group/Transition';
 
@@ -12,7 +12,7 @@ const App = () => {
 	const [showBlock, setShowBlock] = useState(false);
 
 	const showModal = () => {
-		setModalIsOpen(true);
+		setModalIsOpen((prevState) => !prevState);
 	};
 
 	const closeModal = () => {
@@ -29,15 +29,18 @@ const App = () => {
 				Toggle
 			</button>
 
-			<Transition in={showBlock} timeout={1000} 
-      mountOnEnter 
-      unmountOnExit 
-      onEnter={() => console.log('onEnter')}
-      onEntering={() => console.log('onEntering')}
-      onEntered={() => console.log('onEntered')}
-      onExit={() => console.log('onExit')}
-      onExiting={() => console.log('onExiting')}
-      onExited={() => console.log('onExited')}>
+			<Transition
+				in={showBlock}
+				timeout={1000}
+				mountOnEnter
+				unmountOnExit
+				onEnter={() => console.log('onEnter')}
+				onEntering={() => console.log('onEntering')}
+				onEntered={() => console.log('onEntered')}
+				onExit={() => console.log('onExit')}
+				onExiting={() => console.log('onExiting')}
+				onExited={() => console.log('onExited')}
+			>
 				{(state) => (
 					<div
 						style={{
@@ -52,12 +55,8 @@ const App = () => {
 				)}
 			</Transition>
 
-			<br />
-
 			<Modal show={modalIsOpen} closed={closeModal} />
-
 			{modalIsOpen && <Backdrop show={modalIsOpen} />}
-
 			<button className='Button' onClick={showModal}>
 				Open Modal
 			</button>
