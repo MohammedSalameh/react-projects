@@ -46,10 +46,10 @@ const App = () => {
 
 			<br />
 
-			<Transition in={modalIsOpen} timeout={300} mountOnEnter unmountOnExit>
-				{(state) => <Modal show={state} closed={closeModal} />}
-			</Transition>
-			<Backdrop show={modalIsOpen} />
+			<Modal show={modalIsOpen} closed={closeModal} />
+
+			{modalIsOpen && <Backdrop show={modalIsOpen} />}
+
 			<button className='Button' onClick={showModal}>
 				Open Modal
 			</button>
