@@ -1,14 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef,useContext } from 'react';
 import Todo from '../models/todo';
 import classes from './NewTodo.module.css';
+import { TodosContext } from '../store/todos-context';
 
-interface Props {
-	addTodo: (text: string) => void;
-}
-
-const NewTodo: React.FC<Props> = (props) => {
+const NewTodo = () => {
 	//check mdn if unsure
 	const inputRef = useRef<HTMLInputElement>(null);
+	const todosCtx = useContext(TodosContext);
 
 	const onSubmitHandler = (event: React.FormEvent) => {
 		event.preventDefault();
@@ -18,8 +16,9 @@ const NewTodo: React.FC<Props> = (props) => {
 		if (enteredText?.trim().length === 0) {
 			return;
 		}
-		props.addTodo(enteredText!);
+		todosCtx.addTodo(enteredText!);
 	};
+
 	return (
 		<form onSubmit={onSubmitHandler} className={classes.form}>
 			<label htmlFor='text'>todo text</label>
